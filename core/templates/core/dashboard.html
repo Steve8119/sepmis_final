@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{name}} Dashboard</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'core/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+    
+        
+        <section class="sign-in">
+            <div class="container">
+            <div class="main">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="{% static 'core/images/dashboard_bg.jpg' %}" alt="dashboard image" width=""></figure>
+                        <a href="{% url 'changepass' %}" class="signup-image-link" >Change Password</a>
+                        <br>
+                        <a href="{% url 'logout' %}" class="signup-image-link">Logout</a>
+                    </div>
+                        
+                    <div class="signin-form">
+                        <h2 class="form-title">Welcome {{name}}</h2>
+
+                            <div class="form-group form-button">
+                                
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'core/js/main.js' %}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

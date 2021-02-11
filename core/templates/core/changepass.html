@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Change Password</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'core/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+
+    
+        <!-- Sign in  Form -->
+        <section class="sign-in">
+            <div class="container">
+            <div class="main">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="{% static 'core/images/changepass_bg.png' %}" alt="Change Password"></figure>
+                        <a href="{% url 'dashboard' %}" class="signup-image-link">Back To Profile</a>
+                    </div>
+                        
+                    <div class="signin-form">
+                        <h2 class="form-title">Change Password</h2>
+                        <form method="POST" class="register-form" id="login-form">
+                        {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                {{form.old_password}}
+                            </div>
+                            <div class="form-group">
+                                <label for="password1"><i class="zmdi zmdi-lock"></i></label>
+                                {{form.new_password1}}
+                            </div>
+                            <div class="form-group">
+                                <label for="password2"><i class="zmdi zmdi-lock"></i></label>
+                                {{form.new_password2}}
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Change Password"/>
+                            </div>
+                            {{form.errors}}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'core/js/main.js' %}"></script>
+    <script>
+    var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = 'Old Password';
+        form_fields[2].placeholder = 'New Password';
+        form_fields[3].placeholder = 'Confirm New Password';
+    </script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

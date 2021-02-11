@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'core/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" class="register-form" id="register-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                  {{form.username}}
+                            </div>
+                            <div class="form-group">
+                                <label for="first_name"><i class="zmdi zmdi-account-circle"></i></label>
+                                {{form.first_name}}
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                {{form.email}}
+                            </div>
+                            <div class="form-group">
+                                <label for="password1"><i class="zmdi zmdi-lock"></i></label>
+                                {{form.password1}}
+                            </div>
+                            <div class="form-group">
+                                <label for="password2"><i class="zmdi zmdi-lock-outline"></i></label>
+                                {{form.password2}}
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Sign Up"/>
+                            </div>
+                            {{form.errors}}
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{% static 'core/images/signup-image.jpg' %}" alt="sing up image"></figure>
+                        <a href="{% url 'login' %}" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- JS -->
+    <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'core/js/main.js' %}"></script>
+    <script>
+        //Placeholder 
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = 'Username';
+        form_fields[2].placeholder = 'First Name';
+        form_fields[3].placeholder = 'Email';
+        form_fields[4].placeholder = 'Password';
+        form_fields[5].placeholder = 'Confirm Password';
+    </script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
