@@ -27,37 +27,51 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                  {{form.username}}
+                                  {{ form.username }}
                             </div>
                             <div class="form-group">
-                                <label for="first_name"><i class="zmdi zmdi-account-circle"></i></label>
-                                {{form.first_name}}
+                                <label for="full_name"><i class="zmdi zmdi-account-circle"></i></label>
+                                {{ form.full_name }}
+                            </div>
+                            <div class="form-group">
+                                <label for="admission_number"><i class="zmdi zmdi-account-box"></i></label>
+                                {{ form.admission_number }}
+                            </div>
+                            <div class="form-group">
+                                <label for="course"><i class="zmdi zmdi-book"></i></label>
+                                {{ form.course }}
+                            </div>
+                            <div class="form-group">
+                                <label for="year_of_studies"><i class="zmdi zmdi-calendar"></i></label>
+                                {{ form.year_of_studies }}
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                {{form.email}}
+                                {{ form.email }}
                             </div>
                             <div class="form-group">
                                 <label for="password1"><i class="zmdi zmdi-lock"></i></label>
-                                {{form.password1}}
+                                {{ form.password1 }}
                             </div>
                             <div class="form-group">
                                 <label for="password2"><i class="zmdi zmdi-lock-outline"></i></label>
-                                {{form.password2}}
+                                {{ form.password2 }}
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Sign Up"/>
                             </div>
-                            {{form.errors}}
+                            {{ form.errors }}
                         </form>
                     </div>
                     <div class="signup-image">
-                        <figure><img src="{% static 'core/images/signup-image.jpg' %}" alt="sing up image"></figure>
+                        <figure><img src="{% static 'core/images/signup-image.jpg' %}" alt="sign up image"></figure>
                         <a href="{% url 'login' %}" class="signup-image-link">I am already member</a>
                     </div>
                 </div>
             </div>
         </section>
+    </div>
+
     <!-- JS -->
     <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'core/js/main.js' %}"></script>
@@ -65,10 +79,13 @@
         //Placeholder 
         var form_fields = document.getElementsByTagName('input')
         form_fields[1].placeholder = 'Username';
-        form_fields[2].placeholder = 'First Name';
-        form_fields[3].placeholder = 'Email';
-        form_fields[4].placeholder = 'Password';
-        form_fields[5].placeholder = 'Confirm Password';
+        form_fields[2].placeholder = 'Full Name';
+        form_fields[3].placeholder = 'Admission Number';
+        form_fields[4].placeholder = 'Course';
+        form_fields[5].placeholder = 'Year of Studies';
+        form_fields[6].placeholder = 'Email';
+        form_fields[7].placeholder = 'Password';
+        form_fields[8].placeholder = 'Confirm Password';
     </script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 </html>

@@ -1,47 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{name}} Dashboard</title>
+    <title>{{ name }} Dashboard</title>
+
+    {% load static %} <!-- Load the static tag -->
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="{% static 'core/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
 
-    <!-- Main css -->
+    <!-- Main CSS -->
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+
+    <!-- Internal CSS Styles -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #ffffff;
+            padding: 15px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+
+        .sidebar h2 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .dashboard-header h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .dashboard-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .dashboard-actions a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 14px;
+            padding: 12px 24px;
+            border-radius: 4px;
+            background-color: #007bff;
+            transition: background-color 0.3s ease;
+        }
+
+        .dashboard-actions a:hover {
+            background-color: #0056b3;
+        }
+
+        .profile-info {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .profile-info p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .profile-info strong {
+            font-weight: bold;
+            color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .notifications, .chat-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .chat-box {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+        }
+
+        .chat-message.sent {
+            background-color: #d1e7dd;
+        }
+
+        .chat-message.received {
+            background-color: #f8d7da;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     
-        
-        <section class="sign-in">
-            <div class="container">
-            <div class="main">
-                <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img src="{% static 'core/images/dashboard_bg.jpg' %}" alt="dashboard image" width=""></figure>
-                        <a href="{% url 'changepass' %}" class="signup-image-link" >Change Password</a>
-                        <br>
-                        <a href="{% url 'logout' %}" class="signup-image-link">Logout</a>
-                    </div>
-                        
-                    <div class="signin-form">
-                        <h2 class="form-title">Welcome {{name}}</h2>
+<section class="dashboard">
+    <div class="container">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <a href="">Profile</a>
+            <a href="">Units</a>
+            <a href="">Results</a>
+            <a href="">Change Password</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
 
-                            <div class="form-group form-button">
-                                
-                            </div>
-                    </div>
-                </div>
+        <div class="main-content">
+            <div class="dashboard-header">
+                <h2>Welcome, {{ name }}</h2>
             </div>
-        </section>
 
+            <div class="profile-info">
+                <p><strong>Full Name:</strong> {{ full_name }}</p>
+                <p><strong>Username:</strong> {{ username }}</p>
+                <p><strong>Email:</strong> {{ email }}</p>
+                <p><strong>Admission Number:</strong> {{ admission_number }}</p>
+                <p><strong>Course:</strong> {{ course }}</p>
+                <p><strong>Year of Studies:</strong> {{ year_of_studies }}</p>
+                <p><strong>Total Fees:</strong> {{ total_fees }}</p>
+                <p><strong>Fees Balance:</strong> {{ fees_balance }}</p>
+            </div>
+
+            <!-- Notifications Section -->
+            <div class="notifications">
+                <h3>School Notifications</h3>
+                {% for notification in notifications %}
+                <div class="notification">
+                    <p>{{ notification.message }}</p>
+                    <small>{{ notification.date }}</small>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Table for Subject Units and Results -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unit Name</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for unit in units %}
+                    <tr>
+                        <td>{{ unit.name }}</td>
+                        <td>{{ unit.result }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Chat Box Section -->
+            <div class="chat-box">
+                <h3>Chat Box</h3>
+                {% for message in chat_messages %}
+                <div class="chat-message {% if message.sender == request.user %}sent{% else %}received{% endif %}">
+                    <p>{{ message.message }}</p>
+                    <small>{{ message.timestamp }}</small>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
     </div>
+</section>
 
-    <!-- JS -->
-    <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'core/js/main.js' %}"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<!-- JS -->
+<script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'core/js/main.js' %}"></script>
+
+</body>
 </html>

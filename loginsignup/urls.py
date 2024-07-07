@@ -24,4 +24,6 @@ urlpatterns = [
     path('changepass/',views.u_change,name='changepass'),
     path('dashboard/',views.u_dashboard,name='dashboard'),
     path('logout/',views.u_logout,name='logout'),
+    # path('save_units/', views.save_units, name='save_units'),
+
 ]
